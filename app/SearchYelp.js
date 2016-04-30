@@ -4,13 +4,13 @@ import Router from 'react-router';
 class SearchYelp extends React.Component{
   
   getRef(ref) {
-    this.usernameRef = ref;
+    this.placeRef = ref;
   }
   
   handleSubmit() {
-    var username = this.usernameRef.value;
-    this.usernameRef.value = '';
-    this.props.history.push("/profile/"+username);
+    var place = this.placeRef.value;
+    this.placeRef.value = '';
+    this.props.history.push("/place/"+place);
   }
   render() {
     return (
@@ -20,7 +20,7 @@ class SearchYelp extends React.Component{
             <input type="text" className="form-control" ref={(ref) => this.getRef(ref)} />
           </div>
           <div className='form=group col-sm-5'>
-            <button type='submit' className='btn btn-block btn-primary'>Search Github</button>
+            <button type='submit' className='btn btn-block btn-primary'>Search</button>
           </div>
         </form>
       </div>  
@@ -28,8 +28,8 @@ class SearchYelp extends React.Component{
   }
 }
 
-SearchGithub.PropTypes = {
+SearchYelp.PropTypes = {
   history: React.PropTypes.object.isRequired
 };
 
-export default SearchGithub;
+export default SearchYelp;
