@@ -64,7 +64,6 @@ div#content {
     text-transform: uppercase;
     display: flex;
     flex-direction: column;
-    margin: auto;
     div#tag_line {
       display: flex;
       justify-content: center;
@@ -77,6 +76,35 @@ div#content {
         margin: 10px;
       }
     }
+  }
+  div#search {
+    display: flex;
+    width: 100%;
+    margin-top: 100px;
+    
+    form {
+      display: flex;
+      width: 100%;
+      justify-content: space-around;
+    }
+    
+    .design {
+        width: 100%;
+        background-color: $first;
+        color: $slast;
+        padding: 5px;
+        border: 1px solid #fcfae1;
+        border-radius: 5px;
+        font-size: 1.3rem;
+    }
+    
+    div#input_place {
+      width: 70%;
+    }
+    div#place_search {
+      width: 15%;
+    }
+    
   }
   
 }

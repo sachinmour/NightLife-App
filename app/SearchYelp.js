@@ -14,13 +14,13 @@ class SearchYelp extends React.Component{
   }
   render() {
     return (
-      <div className="col-sm-12">
+      <div id="search">
         <form onSubmit={() => this.handleSubmit()}>
-          <div className="form-group col-sm-7">
-            <input type="text" className="form-control" ref={(ref) => this.getRef(ref)} />
+          <div id="input_place">
+            <input type="text" className="design" ref={(ref) => this.getRef(ref)} />
           </div>
-          <div className='form=group col-sm-5'>
-            <button type='submit' className='btn btn-block btn-primary'>Search</button>
+          <div id="place_search">
+            <button type='submit' className="design">Search</button>
           </div>
         </form>
       </div>  
