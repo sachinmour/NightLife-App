@@ -103,6 +103,9 @@ div#content {
     }
     div#place_search {
       width: 15%;
+      button {
+        cursor: pointer;
+      }
     }
     
   }
