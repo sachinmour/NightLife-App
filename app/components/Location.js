@@ -9,3 +9,11 @@ var client = yelp.createClient({
     "token_secret": process.env.Token_Secret
   }
 });
+
+client.search({
+  terms: "Café de la presse",
+  location: "BELGIUM"
+}).then(function (data) {
+  var businesses = data.businesses;
+  var location = data.region;
+});
