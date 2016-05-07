@@ -1,19 +1,65 @@
 import React from 'react';
-import yelp from 'node-yelp';
+import ReactDOM from "react-dom";
+import {Router} from "react-router";
+import routes from '../config/routes';
+import {hashHistory} from 'react-router';
+import Yelp from "yelp";
 
-var client = yelp.createClient({
-  oauth: {
-    "consumer_key": process.env.Consumer_Secret,
-    "consumer_secret": process.env.Consumer_Key,
-    "token": process.env.Token,
-    "token_secret": process.env.Token_Secret
+const yelp = new Yelp({
+});
+ 
+// See http://www.yelp.com/developers/documentation/v2/search_api 
+
+class Location extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     notes: [],
+  //     repos: [],
+  //     bio: {}
+  //   };
+  // }
+  
+  componentDidMount() {
+    this.init(this.props.params.place);
   }
-});
+  
+  // componentWillReceiveProps(nextProps) {
+  //   base.removeBinding(this.ref);
+  //   this.init(nextProps.params.username);
+  // }
+  
+  // componentWillUnmount() {
+  //   base.removeBinding(this.ref);
+  // }
+  
+  init(place) {
+    
+  yelp.search({ term: 'food', location: 'Montreal' })
+  .then(function (data) {
+    console.log(data);
+  })
+  .catch(function (err) {
+    console.error(err);
+  });
+    
+  }
+  
+  // handleAddNote(newNote) {
+  //   // update firebase, with the newNote
+  //   base.post(this.props.params.username, {
+  //     data: this.state.notes.concat([newNote])
+  //   });
+  // }
+  
+  render() {
+    return (
+      <div className="row">
+        
+      </div>
+    );
+  }
+  
+}
 
-client.search({
-  terms: "bars",
-  location: this.props.location
-}).then(function (data) {
-  var businesses = data.businesses;
-  var location = data.region;
-});
+export default Location;
