@@ -1,27 +1,21 @@
 import React from 'react';
-import ReactDOM from "react-dom";
-import {Router} from "react-router";
-import routes from '../config/routes';
-import {hashHistory} from 'react-router';
 import Yelp from "yelp";
+// import callit from "../utils/helpers.js"
+import $ from "jquery";
 
-const yelp = new Yelp({
-});
+var get_data = function() {
+  return "ab";
+}
  
 // See http://www.yelp.com/developers/documentation/v2/search_api 
 
 class Location extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     notes: [],
-  //     repos: [],
-  //     bio: {}
-  //   };
-  // }
-  
-  componentDidMount() {
-    this.init(this.props.params.place);
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: {},
+      check: "da"
+    };
   }
   
   // componentWillReceiveProps(nextProps) {
@@ -29,20 +23,26 @@ class Location extends React.Component {
   //   this.init(nextProps.params.username);
   // }
   
-  // componentWillUnmount() {
-  //   base.removeBinding(this.ref);
-  // }
+  componentDidmount() {
+    this.setState({check: "pa"});
+    this.serverRequest = yelp.search({ term: 'food', location: 'Montreal' })
+    .then(function (data) {
+      this.setState({data: data, check: get_data()});
+    }).bind(this);
+  }
   
-  init(place) {
-    
-  yelp.search({ term: 'food', location: 'Montreal' })
-  .then(function (data) {
-    console.log(data);
-  })
-  .catch(function (err) {
-    console.error(err);
-  });
-    
+  componentWillUnmount() {
+    this.serverRequest.abort();
+  }
+  
+  check() {
+    console.log(this.state.check);
+  }
+  
+  init() {
+    console.log(this.state.data);
+    console.log(this.state.check);
+    console.log("");
   }
   
   // handleAddNote(newNote) {
@@ -54,8 +54,9 @@ class Location extends React.Component {
   
   render() {
     return (
-      <div className="row">
-        
+      <div className="row" onClick={this.componentDidmount.bind(this)}>
+      <div className="row" onClick={this.init.bind(this)}>
+      </div>
       </div>
     );
   }
