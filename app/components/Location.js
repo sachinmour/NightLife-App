@@ -2,10 +2,6 @@ import React from 'react';
 import Yelp from "yelp";
 // import callit from "../utils/helpers.js"
 import $ from "jquery";
-
-var get_data = function() {
-  return "ab";
-}
  
 // See http://www.yelp.com/developers/documentation/v2/search_api 
 
