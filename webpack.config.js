@@ -3,18 +3,29 @@ var fs = require('fs');
 var webpack = require('webpack');
 
 module.exports = {
-    entry: ["webpack-hot-middleware/client?https://0.0.0.0:8080", "webpack/hot/only-dev-server","./app/App.js"],
+    devtool: 'inline-source-map',
+    entry: [
+        'webpack-hot-middleware/client',
+        './app/components/App.js'
+    ],
     output: {
-        path: path.join(__dirname, '/'),
-        publicPath: "/",
-        filename: "public/bundle.js"
+        path: path.resolve("./public"),
+        filename: "bundle.js",
+        publicPath: "/"
     },
     module: {
         loaders: [
             {
                 test: /\.jsx?$/,
                 exclude: /(node_modules|bower_components)/,
-                loaders: ['react-hot', 'babel']
+                // loaders: [
+                //     'react-hot', 
+                //     'babel?presets[]=react,presets[]=es2015'
+                // ]
+                loader: 'babel',
+                query: {
+                    presets: ['es2015', 'react', 'react-hmre']
+                }
             },
             {
                 test: /\.scss$/,
@@ -23,7 +34,9 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin()
     ],
     resolve: {
         extensions: ['', '.js', '.jsx']
