@@ -8,6 +8,5 @@ import {Route, IndexRoute} from 'react-router';
 export default (
   <Route path='/' component={Main}>
     <Route path="place/:place" component={Location} />
-    <IndexRoute component={Home} />
   </Route>
 );

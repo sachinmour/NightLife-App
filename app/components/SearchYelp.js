@@ -3,19 +3,27 @@ import Router from 'react-router';
 
 class SearchYelp extends React.Component{
   
+  constructor(props, context){
+    super(props);
+    context.router
+  }
+  
   getRef(ref) {
     this.placeRef = ref;
   }
   
-  handleSubmit() {
+  handleSubmit(e) {
+    e.preventDefault();
+    console.log(e);
     var place = this.placeRef.value;
     this.placeRef.value = '';
-    this.props.history.push("/place/"+place);
+    this.context.router.push('/place/'+place);
   }
+  
   render() {
     return (
       <div id="search">
-        <form onSubmit={() => this.handleSubmit()}>
+        <form onSubmit={(e) => this.handleSubmit(e)}>
           <div id="input_place">
             <input type="text" className="design" ref={(ref) => this.getRef(ref)} />
           </div>
@@ -28,8 +36,8 @@ class SearchYelp extends React.Component{
   }
 }
 
-SearchYelp.PropTypes = {
-  history: React.PropTypes.object.isRequired
+SearchYelp.contextTypes = {
+    router: React.PropTypes.object.isRequired
 };
 
 export default SearchYelp;
