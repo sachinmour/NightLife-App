@@ -1,7 +1,30 @@
+require('dotenv').config();
 var path = require('path');
-var express = require('express');
+
+var express = require('express'),
+    server_routes = require("./app/server_routes/routes"),
+    passport = require("passport"),
+    flash = require("connect-flash"),
+    morgan = require('morgan'),
+    cookieParser = require("cookie-parser"),
+    bodyParser = require("body-parser"),
+    session = require("express-session");
+    
 var app = express();
 var PORT = process.env.PORT || 8080
+
+app.use(morgan('dev'));
+app.use(cookieParser()); // read cookies (needed for auth)
+app.use(bodyParser.json());             //
+app.use(bodyParser.urlencoded({         // get information from html forms    
+  extended: true                        //
+}));
+
+// required for passport
+app.use(session({ secret: 'somethingsecretivetostore', saveUninitialized: true, resave: true })); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
 
 // using webpack-dev-server and middleware in development environment
 if(process.env.NODE_ENV !== 'production') {
@@ -17,9 +40,7 @@ if(process.env.NODE_ENV !== 'production') {
 
 app.use(express.static(path.join(__dirname, '/public')));
 
-app.get('/', function(request, response) {
-  response.sendFile(__dirname + '/public/index.html')
-});
+server_routes(app, passport);
 
 app.listen(PORT, function(error) {
   if (error) {

@@ -1,5 +1,7 @@
 import React from "react";
 import Router from 'react-router';
+import path from 'path';
+import axios from 'axios';
 
 class SearchYelp extends React.Component{
   
@@ -14,10 +16,18 @@ class SearchYelp extends React.Component{
   
   handleSubmit(e) {
     e.preventDefault();
-    console.log(e);
     var place = this.placeRef.value;
     this.placeRef.value = '';
     this.context.router.push('/place/'+place);
+    axios.post('/yelpsearch', {
+      place: place
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (response) {
+      console.log(response);
+    });
   }
   
   render() {

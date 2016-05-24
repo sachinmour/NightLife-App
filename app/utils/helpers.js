@@ -1,24 +1,22 @@
 var Yelp = require('yelp');
- 
+
 var yelp = new Yelp({
-  consumer_key: 'YTrtc6_DDIb73-uIPXLEGw',
-  consumer_secret: '5EIaJnpXUQF9EVglXQ6oZvovs3s',
-  token: '4ceCu_vpnEQLdo6QVJOlwu0QT9_hJqQi',
-  token_secret: 'HIGe3rr5YN8rM5jot74E0ibQYgA',
+  consumer_key: process.env.Consumer_Key,
+  consumer_secret: process.env.Consumer_Secret,
+  token: process.env.Token,
+  token_secret: process.env.Token_Secret
 });
  
 // See http://www.yelp.com/developers/documentation/v2/search_api
 
-var get_data = function(place) {
-  var x = "";
+var get_yelp_data = function(place, res) {
   yelp.search({ term: 'food', location: 'Montreal' })
   .then(function (data) {
-    x = data;
+    res.json(data);
   })
   .catch(function (err) {
-    x = err;
+    res.json(err);
   });
-  return x;
-}
+};
 
-export default get_data;
+module.exports = get_yelp_data;
