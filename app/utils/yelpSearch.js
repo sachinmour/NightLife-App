@@ -10,7 +10,7 @@ var yelp = new Yelp({
 // See http://www.yelp.com/developers/documentation/v2/search_api
 
 var get_yelp_data = function(place, res) {
-  yelp.search({ term: 'food', location: 'Montreal' })
+  yelp.search({ term: 'Bars', location: place })
   .then(function (data) {
     res.json(data);
   })

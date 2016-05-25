@@ -2,12 +2,16 @@ import React from "react";
 import Router from 'react-router';
 import path from 'path';
 import axios from 'axios';
+import Location from './Location';
 
 class SearchYelp extends React.Component{
   
   constructor(props, context){
     super(props);
-    context.router
+    context.router;
+    this.state = {
+      bars: []
+    };
   }
   
   getRef(ref) {
@@ -17,13 +21,15 @@ class SearchYelp extends React.Component{
   handleSubmit(e) {
     e.preventDefault();
     var place = this.placeRef.value;
-    this.placeRef.value = '';
+    var here = this;
     this.context.router.push('/place/'+place);
     axios.post('/yelpsearch', {
       place: place
     })
     .then(function (response) {
-      console.log(response);
+      here.setState({
+        bars: response.data.businesses
+      });
     })
     .catch(function (response) {
       console.log(response);
@@ -32,6 +38,7 @@ class SearchYelp extends React.Component{
   
   render() {
     return (
+      <div>
       <div id="search">
         <form onSubmit={(e) => this.handleSubmit(e)}>
           <div id="input_place">
@@ -41,6 +48,8 @@ class SearchYelp extends React.Component{
             <button type='submit' className="design">Search</button>
           </div>
         </form>
+      </div>
+      <Location bars={this.state.bars} />
       </div>
     );
   }

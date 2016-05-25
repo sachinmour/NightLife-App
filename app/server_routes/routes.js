@@ -1,5 +1,5 @@
 'use strict';
-var yelp_search = require('../utils/helpers');
+var yelp_search = require('../utils/yelpSearch');
 
 module.exports = function(app, passport) {
 

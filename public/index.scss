@@ -43,6 +43,7 @@ div#app {
 
 div#content {
   width: 100%;
+  padding-top: 40px;
   font-family: 'Open Sans', sans-serif;
   max-width: 768px;
   margin: auto;
@@ -59,7 +60,7 @@ div#content {
     padding: 40px 15px;
   }
   
-  div#top_header {
+  div#top_header {;
     font-size: 3rem;
     text-transform: uppercase;
     display: flex;
@@ -112,6 +113,47 @@ div#content {
   
 }
 
-.row {
-  height: 40px;
+div#searchresults {
+  margin-top: 20px;
+  div.result {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    div {
+      display: flex;
+      padding: 8px;
+      align-items: center;
+      justify-content: center;
+      &.info {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        div.name {
+          padding: 0;
+          display: flex;
+          align-self: flex-start;
+          font-weight: 600;
+          justify-content: flex-start;
+        }
+        div.review {
+          font-style: italic;
+        }
+      }
+      &.going {
+        display: flex;
+        flex-direction: column;
+        width: 10%;
+        text-transform: uppercase;
+        span {
+          padding-right: 5px;
+        }
+      }
+      p {
+        margin: 0;
+      }
+    }
+    img {
+      border-radius: 10px;
+    }
+  } 
 }

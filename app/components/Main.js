@@ -7,7 +7,6 @@ const Main = ({history, children}) => {
       <div id="content">
         <Home />
         <SearchYelp history={history} />
-        {children}
       </div>
     );
 };
