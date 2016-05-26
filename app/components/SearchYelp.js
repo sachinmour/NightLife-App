@@ -1,6 +1,4 @@
 import React from "react";
-import Router from 'react-router';
-import path from 'path';
 import axios from 'axios';
 import Location from './Location';
 
@@ -8,7 +6,7 @@ class SearchYelp extends React.Component{
   
   constructor(props, context){
     super(props);
-    context.router;
+    // context.router;
     this.state = {
       bars: []
     };
@@ -22,7 +20,6 @@ class SearchYelp extends React.Component{
     e.preventDefault();
     var place = this.placeRef.value;
     var here = this;
-    this.context.router.push('/place/'+place);
     axios.post('/yelpsearch', {
       place: place
     })
@@ -45,7 +42,7 @@ class SearchYelp extends React.Component{
             <input type="text" className="design" ref={(ref) => this.getRef(ref)} />
           </div>
           <div id="place_search">
-            <button type='submit' className="design">Search</button>
+            <button type='submit' className="design">Go</button>
           </div>
         </form>
       </div>

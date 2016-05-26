@@ -37,6 +37,7 @@
     "express-session": "^1.13.0",
     "fs": "*",
     "jquery": "^2.2.4",
+    "mongoose": "^4.4.19",
     "morgan": "^1.7.0",
     "node-yelp": "*",
     "passport": "^0.3.2",

@@ -3,14 +3,16 @@ var path = require('path');
 
 var express = require('express'),
     server_routes = require("./app/server_routes/routes"),
+    mongoose = require("mongoose"),
     passport = require("passport"),
     flash = require("connect-flash"),
     morgan = require('morgan'),
     cookieParser = require("cookie-parser"),
     bodyParser = require("body-parser"),
     session = require("express-session");
-    
+
 var app = express();
+mongoose.connect(process.env.MONGOLAB_URI);
 var PORT = process.env.PORT || 8080
 
 app.use(morgan('dev'));
