@@ -13,7 +13,10 @@ var express = require('express'),
 
 var app = express();
 mongoose.connect(process.env.MONGOLAB_URI);
-var PORT = process.env.PORT || 8080
+
+require('./app/config/passport')(passport);
+
+var PORT = process.env.PORT || 8080;
 
 app.use(morgan('dev'));
 app.use(cookieParser()); // read cookies (needed for auth)
