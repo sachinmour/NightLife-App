@@ -7,6 +7,7 @@ module.exports = function(app, passport) {
     // HOME PAGE (with login links) ========
     // =====================================
     app.get('/', function(req, res) {
+        console.log(req.user);
         res.sendFile(__dirname + '/public/index.html');
     });
     
@@ -18,6 +19,11 @@ module.exports = function(app, passport) {
     
     app.post('/yelpsearch', function (req, res) {
         yelp_search(req.body.place, res);
+    });
+    
+    app.get('/getUser', isLoggedIn, function(req, res) {
+        console.log('getUser');
+        res.json(req.user);
     });
     
 };
