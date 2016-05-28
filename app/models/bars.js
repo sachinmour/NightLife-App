@@ -5,8 +5,7 @@ var User = require('./users.js');
 
 var barSchema = new Schema ({
   name         : String,
-  count        : {type: Number, default: 0},
-  user_ids      : [{ type: Schema.ObjectId, ref: 'User' }]
+  count        : {type: Number, default: 0}
 });
 
 var Bar = mongoose.model('Bar', barSchema);

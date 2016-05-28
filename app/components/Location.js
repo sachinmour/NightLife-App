@@ -7,12 +7,13 @@ class Location extends React.Component {
   }
   
   render() {
+    var ids = this.props.user.bar_ids;
     return (
       <div id="searchresults">
         {
           this.props.bars.map(function(bar, i) {
             return (
-              <Bar key={i} bar={bar}/>
+              <Bar key={bar.id} bar={bar} bar_ids={ids} />
             );
           })
         }
