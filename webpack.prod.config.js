@@ -3,9 +3,8 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-    devtool: 'inline-source-map',
+    devtool: 'cheap-module-source-map',
     entry: [
-        'webpack-hot-middleware/client',
         './app/components/App.js'
     ],
     output: {
@@ -20,7 +19,7 @@ module.exports = {
                 exclude: /(node_modules|bower_components)/,
                 loader: 'babel',
                 query: {
-                    presets: ['es2015', 'react', 'react-hmre']
+                    presets: ['es2015', 'react']
                 }
             },
             {
@@ -34,8 +33,12 @@ module.exports = {
             allChunks: true
         }),
         new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoErrorsPlugin(),
+        new webpack.DefinePlugin({
+          'process.env': {
+            'NODE_ENV': JSON.stringify('production')
+          }
+        })
     ],
     resolve: {
         extensions: ['', '.js', '.jsx']

@@ -7,8 +7,6 @@ $tablet-width: 768px;
 $desktop-width: 1024px;
 $share-width: 990px;
 
-@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css");
-
 @mixin tablet {
   @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
     @content;
@@ -61,6 +59,16 @@ div#content {
 
   @include tablet {
     padding: 40px 15px;
+  }
+  
+  div#loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      width: 50px;
+    }
+    margin-top: 20px;
   }
   
   div#top_header {;

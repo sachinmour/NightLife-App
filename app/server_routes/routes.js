@@ -11,9 +11,7 @@ module.exports = function(app, passport) {
     // HOME PAGE (with login links) ========
     // =====================================
     app.get('/', function(req, res) {
-        console.log('hel');
         serverRender.handleRender(req, res);
-        // res.sendFile(__dirname + '/public/index.html');
     });
     
     app.get('/auth/twitter', passport.authenticate('twitter'));

@@ -10,7 +10,8 @@ class SearchYelp extends React.Component{
     this.state = {
       user: {},
       location: "",
-      bars: []
+      bars: [],
+      loading: false
     };
   }
   
@@ -39,21 +40,35 @@ class SearchYelp extends React.Component{
   handleSubmit(e) {
     if (e) e.preventDefault();
     var _this = this;
+    _this.setState({loading: true});
     var place = this.state.location;
     axios.post('/yelpsearch', {
       place: place
     })
     .then(function (response) {
       _this.setState({
-        bars: response.data.businesses
+        bars: response.data.businesses,
+        loading: false
       });
     })
     .catch(function (response) {
       console.log(response);
+      _this.setState({
+        loading: false
+      });
     });
   }
   
   render() {
+    
+    var showComponent;
+    
+    if (this.state.loading) {
+      showComponent = <div id="loading"><img src="loading.gif" /></div>;
+    } else {
+      showComponent = <Location bars={this.state.bars} user={this.state.user} />;
+    }
+    
     return (
       <div>
       <div id="search">
@@ -67,7 +82,7 @@ class SearchYelp extends React.Component{
           </div>
         </form>
       </div>
-      <Location bars={this.state.bars} user={this.state.user} />
+      {showComponent}
       </div>
     );
   }
