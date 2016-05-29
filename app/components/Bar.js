@@ -31,6 +31,7 @@ class Bar extends React.Component {
   handleClick() {
     var _this = this;
     if (!_this.state.going) {
+      _this.setState({count: _this.state.count+1, going: true});
       axios.get('/addbar/'+this.props.bar.id)
       .then(function (response) {
         if (!response.data.redirect) {
@@ -43,6 +44,7 @@ class Bar extends React.Component {
         console.log(response);
       });
     } else {
+      _this.setState({count: _this.state.count-1, going: false});
       axios.get('/removebar/'+this.props.bar.id)
       .then(function (response) {
         if (!response.data.redirect) {
@@ -58,13 +60,13 @@ class Bar extends React.Component {
   }
   
   render() {
-    
+    console.log(this.props.bar);
     return (
       <div className="result">
         <div className="photo"><img src={this.props.bar.image_url} alt={this.props.bar.id} /></div>
         <div className="info">
           <div className="name">
-            <p>{this.props.bar.name}</p>
+            <a href={this.props.bar.url}><p>{this.props.bar.name}</p></a>
           </div>
           <div className="review">
             <p>{this.props.bar.snippet_text}</p>

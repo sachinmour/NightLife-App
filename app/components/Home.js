@@ -11,6 +11,7 @@ class Home extends Component {
             <i className="fa fa-beer" aria-hidden="true"></i>
             <i className="fa fa-cutlery" aria-hidden="true"></i>
           </div>
+          <div id="line">Let's have a few drinks together</div>
         </div>
       );
   }

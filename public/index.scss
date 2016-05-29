@@ -7,7 +7,6 @@ $tablet-width: 768px;
 $desktop-width: 1024px;
 $share-width: 990px;
 
-@import url("https://s3-us-west-2.amazonaws.com/pesticide/1.2.0/pesticide.min.css");
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css");
 
 @mixin tablet {
@@ -34,9 +33,13 @@ body {
   background-color: $first;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 div#app {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   color: $slast;
   margin: 0;
 }
@@ -65,6 +68,16 @@ div#content {
     text-transform: uppercase;
     display: flex;
     flex-direction: column;
+    
+    div#line {
+      font-size: 1.5rem;
+      display: flex;
+      margin-top: 20px;
+      justify-content: center;
+      text-align: center;
+      text-transform: none;
+    }
+    
     div#tag_line {
       display: flex;
       justify-content: center;
@@ -81,7 +94,7 @@ div#content {
   div#search {
     display: flex;
     width: 100%;
-    margin-top: 100px;
+    margin-top: 50px;
     
     form {
       display: flex;
@@ -119,6 +132,10 @@ div#searchresults {
     margin-top: 20px;
     margin-bottom: 20px;
     display: flex;
+    border-radius: 5px;
+    &:hover {
+      border: 1px solid whitesmoke;
+    }
     div {
       display: flex;
       padding: 8px;
@@ -134,18 +151,35 @@ div#searchresults {
           align-self: flex-start;
           font-weight: 600;
           justify-content: flex-start;
-        }
-        div.review {
-          font-style: italic;
+          a {
+            text-decoration: none;
+            color: white;
+          }
         }
       }
+      
+      &.photo {
+        width: 15%;
+      }
+      
       &.going {
         display: flex;
         flex-direction: column;
-        width: 10%;
+        width: 15%;
         text-transform: uppercase;
+        cursor: pointer;
+        div.stat {
+          display: flex;
+          justify-content: center;
+          text-align: center;
+        }
         span {
           padding-right: 5px;
+        }
+        &:hover {
+          border-bottom: 1px solid whitesmoke;
+          border-left: 1px solid whitesmoke;
+          border-left-width: thick;
         }
       }
       p {
