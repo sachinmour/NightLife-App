@@ -24,6 +24,7 @@
   "homepage": "https://github.com/sachinmour/night-life-app#readme",
   "dependencies": {
     "axios": "^0.11.1",
+    "babel": "^6.5.2",
     "babel-core": "^6.9.0",
     "babel-loader": "*",
     "babel-preset-es2015": "^6.9.0",
@@ -52,8 +53,10 @@
     "yelp": "*"
   },
   "devDependencies": {
+    "babel-cli": "^6.9.0",
     "babel-preset-react-hmre": "*",
     "css-loader": "*",
+    "extract-text-webpack-plugin": "^1.0.1",
     "node-sass": "*",
     "react-hot-loader": "^1.3.0",
     "sass-loader": "*",

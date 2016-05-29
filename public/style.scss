@@ -133,6 +133,7 @@ div#searchresults {
     margin-bottom: 20px;
     display: flex;
     border-radius: 5px;
+    border: 1px solid transparent;
     &:hover {
       border: 1px solid whitesmoke;
     }

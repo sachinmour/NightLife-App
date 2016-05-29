@@ -73,8 +73,4 @@ class SearchYelp extends React.Component{
   }
 }
 
-SearchYelp.contextTypes = {
-    router: React.PropTypes.object.isRequired
-};
-
 export default SearchYelp;

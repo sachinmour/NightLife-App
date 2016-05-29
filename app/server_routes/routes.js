@@ -1,17 +1,19 @@
 'use strict';
 var yelp_search = require('../utils/yelpSearch');
 var handleBar = require('../utils/handleBar');
+var serverRender = require("../utils/serverRendering");
 
 var Bar = require("../models/bars");
 
 module.exports = function(app, passport) {
-
+    
     // =====================================
     // HOME PAGE (with login links) ========
     // =====================================
     app.get('/', function(req, res) {
-        console.log(req.user);
-        res.sendFile(__dirname + '/public/index.html');
+        console.log('hel');
+        serverRender.handleRender(req, res);
+        // res.sendFile(__dirname + '/public/index.html');
     });
     
     app.get('/auth/twitter', passport.authenticate('twitter'));

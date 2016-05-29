@@ -39,16 +39,3 @@ module.exports = {
   }
   
 };
-
-
-  // this.getBar = function(req, res) {
-  //   var response = {count: 0, going: false}
-  //   if (req.isAuthenticated()) {
-  //     Bar.findOne({name: req.params.name}, function(err, bar) {
-  //       if (err) throw err;
-  //       req.user.bar_ids
-  //     })
-  //   } else {
-      
-  //   }
-  // };

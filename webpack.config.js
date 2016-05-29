@@ -1,6 +1,6 @@
 var path = require("path");
-var fs = require('fs');
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     devtool: 'inline-source-map',
@@ -20,16 +20,20 @@ module.exports = {
                 exclude: /(node_modules|bower_components)/,
                 loader: 'babel',
                 query: {
-                    presets: ['es2015', 'react', 'react-hmre']
+                    presets: ['es2015', 'react']
+                    // , 'react-hmre'
                 }
             },
             {
                 test: /\.scss$/,
-                loaders: ["style", "css", "sass"]
+                loader: ExtractTextPlugin.extract('css!sass')
             }
         ]
     },
     plugins: [
+        new ExtractTextPlugin('main.css', {
+            allChunks: true
+        }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin()
