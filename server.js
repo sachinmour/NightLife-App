@@ -1,4 +1,3 @@
-require('dotenv').config();
 require('babel-core/register');
 var path = require('path');
 
@@ -7,7 +6,6 @@ var express = require('express'),
     mongoose = require("mongoose"),
     passport = require("passport"),
     flash = require("connect-flash"),
-    morgan = require('morgan'),
     cookieParser = require("cookie-parser"),
     bodyParser = require("body-parser"),
     session = require("express-session");
@@ -19,7 +17,6 @@ require('./app/config/passport')(passport);
 
 var PORT = process.env.PORT || 8080;
 
-app.use(morgan('dev'));
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json());             //
 app.use(bodyParser.urlencoded({         // get information from html forms    
