@@ -19,7 +19,7 @@ module.exports = function (passport) {
 	passport.use(new TwitterStrategy({
     consumerKey: process.env.Twitter_api_key,
     consumerSecret: process.env.Twitter_api_secret,
-    callbackURL: "http://clementine-sachinmour.c9users.io/auth/twitter/callback"
+    callbackURL: "https://goouttonight.herokuapp.com/auth/twitter/callback"
   },
   function(token, tokenSecret, profile, done) {
     User.findOne({username: profile.username}, function(err, user) {
