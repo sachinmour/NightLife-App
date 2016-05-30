@@ -15,7 +15,6 @@ module.exports = {
         return console.log(err);
       }
       const document = file.replace(/<div id="app"><\/div>/, `<div id="app">${html}</div>`);
-      console.log(document);
       res.send(document);
     });
   }

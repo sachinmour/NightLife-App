@@ -1,7 +1,7 @@
 import React from "react";
-import axios from 'axios';
 import Home from "./Home";
-import SearchYelp from "./SearchYelp.js";
+import SearchYelp from "./SearchYelp";
+import Footer from "./Footer";
 
 class Main extends React.Component{
   
@@ -14,10 +14,11 @@ class Main extends React.Component{
       <div id="content">
         <Home />
         <SearchYelp history={this.props.history} />
+        <Footer />
       </div>
     );
   }
   
-};
+}
 
 export default Main;
